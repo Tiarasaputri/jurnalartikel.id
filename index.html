@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnal Ilmiah Indonesia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .header-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #2a5298;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Featured Article */
+        .featured-article {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .featured-article img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 2rem;
+        }
+
+        .featured-content h2 {
+            color: #2a5298;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta span {
+            margin-right: 1rem;
+        }
+
+        /* Article Grid */
+        .articles-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .article-card-content {
+            padding: 1.5rem;
+        }
+
+        .article-card h3 {
+            color: #2a5298;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #2a5298;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #1e3c72;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-section h3 {
+            color: #2a5298;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+
+        .recent-article {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .recent-article:last-child {
+            border-bottom: none;
+        }
+
+        .recent-article h4 {
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recent-article p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .category-tag:hover {
+            background: #2a5298;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Jurnal Ilmiah Indonesia</h1>
+                <p>Portal Publikasi Penelitian dan Karya Ilmiah Terkini</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#articles">Artikel</a></li>
+                <li><a href="#categories">Kategori</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            <main>
+                <article class="featured-article">
+                    <div class="featured-content">
+                        <h2> Meretas Pembelajaran berbasis pengalaman Melalui Akademik dan FGD Di rammang-rammang</h2>
+                        <div class="article-meta">
+                            <span>📅 8 Juli 2025</span>
+                            <span> Tiara Saputri ilham</span>
+                            <span>Manajemen</span>
+                        </div>
+                        <p></p>
+                    </div>
+                <p>Keywords: experiential learning, academic tourism, FGD, Rammang-Rammang, environmental education</p>
+                
+                <P><h2 style="color: blue;"><u>Abstract</u></h2>
+                This research examines the effectiveness of experiential learning through a combination of academic tourism and Focus Group Discussion (FGD) in the Rammang-Rammang karst area, Maros Regency, South Sulawesi. Qualitative methods with a phenomenological approach were used to understand learners' learning experiences. Data were collected through participatory observation, in-depth interviews, and documentation during academic tours and FGDs. The results showed that experiential learning in Rammang-Rammang was able to improve conceptual understanding, critical thinking skills, and appreciation of natural and cultural heritage. The combination of direct exploration in the field with reflective discussions in FGDs proved effective in constructing meaningful and sustainable knowledge.</P>
+                
+                <p><h2 style="color: blue;"><u>References</u></h2>
+<p>Aoun, C., Vatier, C., Loundou, A., Cornette, J., & Larchet, M. (2013). A multicenter study of academic tourism programs in medical education. Medical Teacher, 35(7), 533-539.</p>
+<p>Beard, C., & Wilson, J. P. (2018). Experiential Learning: A Handbook for Education, Training and Coaching. London: Kogan Page.</p>
+<p>Boud, D., Keogh, R., & Walker, D. (2013). Reflection: Turning Experience into Learning. London: Routledge.</p>
+<p>Chen, J. S., & Gursoy, D. (2001). An investigation of tourists' destination loyalty and preferences. International Journal of Contemporary Hospitality Management, 13(2), 79-85.</p>
+<p>Dewey, J. (1938). Experience and Education. New York: Macmillan.</p>
+<p>Ford, P. (1986). Outdoor Education: Definition and Philosophy. Las Cruces, NM: Educational Resources Information Center.</p>
+<p>Healey, M., & Jenkins, A. (2000). Kolb's experiential learning theory and its application in geography in higher education. Journal of Geography, 99(5), 185-195.</p>
+<p>Hendarti, L., Winarno, G. D., & Rusita, R. (2017). Potensi dan strategi pengembangan ekowisata di Kawasan Karst Rammang-Rammang Kabupaten Maros. Jurnal Sylva Lestari, 5(2), 44-55.</p>
+<p>Kolb, D. A. (1984). Experiential Learning: Experience as the Source of Learning and Development. Englewood Cliffs, NJ: Prentice-Hall.</p>
+<p>Kolb, A. Y., & Kolb, D. A. (2005). Learning styles and learning spaces: Enhancing experiential learning in higher education. Academy of Management Learning & Education, 4(2), 193-212.</p>
+<p>Krueger, R. A., & Casey, M. A. (2014). Focus Groups: A Practical Guide for Applied Research. London: SAGE Publications.</p>
+<p>Kurniawan, A., Undaharta, N. K. E., & Pendit, I. M. R. (2018). Pengembangan model pembelajaran berbasis pengalaman untuk meningkatkan hasil belajar geografi siswa. Jurnal Pendidikan Geografi, 5(1), 23-34.</p>
+<p>Lewin, K. (1946). Action research and minority problems. Journal of Social Issues, 2(4), 34-46.</p>
+<p>Libarkin, J. C., & Kurdziel, J. P. (2002). Research methodologies in science education: The qualitative-quantitative debate. Journal of Geoscience Education, 50(1), 78-86.</p>
+<p>Lonergan, N., & Andresen, L. W. (1988). Field-based education: Some theoretical considerations. Higher Education Research and Development, 7(1), 63-77.</p>
+<p>Marvasti, A. B. (2018). Research Methods. Cambridge: Cambridge University Press.</p>
+<p>Mezirow, J. (1991). Transformative Dimensions of Adult Learning. San Francisco: Jossey-Bass.</p>
+<p>Nugraha, A. R., Saptono, S., & Saefudin, A. (2020). Efektivitas pembelajaran berbasis pengalaman dalam meningkatkan literasi lingkungan mahasiswa. Jurnal Pendidikan Lingkungan dan Pembangunan Berkelanjutan, 21(1), 45-58.</p>
+<p>Permen, D. H. (2019). Karakteristik geomorfologi dan hidrologi kawasan karst Rammang-Rammang, Sulawesi Selatan. Jurnal Geologi Indonesia, 4(2), 89-102.</p>
+<p>Piaget, J. (1952). The Origins of Intelligence in Children. New York: International Universities Press.</p>
+<p>Priest, S. (1986). Redefining outdoor education: A matter of many relationships. Journal of Environmental Education, 17(3), 13-15.</p>
+<p>Priyono, K. D., & Mardiana, U. (2017). Model pembelajaran lapangan berbasis kearifan lokal untuk meningkatkan kepedulian lingkungan. Jurnal Kependidikan, 1(2), 234-248.</p>
+<p>Rahmawati, D., Widodo, E., & Budiarto, R. (2019). Implementasi Focus Group Discussion dalam pembelajaran geografi untuk meningkatkan kemampuan berpikir kritis siswa. Jurnal Pendidikan Geografi, 7(1), 12-21.</p>
+<p>Schön, D. A. (1983). The Reflective Practitioner: How Professionals Think in Action. New York: Basic Books.</p>
+<p>Sumarmi, S. (2012). Model-model pembelajaran geografi. Malang: Aditya Media Publishing.</p>
+<p>Vygotsky, L. S. (1978). Mind in Society: The Development of Higher Psychological Processes. Cambridge, MA: Harvard University Press.</p>
+<p>Wurdinger, S. D., & Carlson, J. A. (2010). Teaching for Experiential Learning: Five Approaches That Work. London: Rowman & Littlefield Education.</p>
+<p>Yin, R. K. (2017). Case Study Research and Applications: Design and Methods. London: SAGE Publications.</p>
+</p>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                   <body style="background-colowheatite;text-decoration:underline: text;"-decorationcolor:yellowgreen;;><a href="Jurnal Ilmu Pariwisata dan Manajemen.pdf"target="_blank">PUBLICATE PDF DISINI</h3></body> <h3>PDF</h3>
+                    <div class="recent-article">
+                        <h4>Inovasi Blockchain dalam Sistem Voting Elektronik</h4>
+                        <p>Dr. Agus Wibowo • 7 Juli 2025</p>
+                    </div>
+                    <div class="recent-article">
+                        <h4>Penggunaan Machine Learning untuk Prediksi Cuaca</h4>
+                        <p>Prof. Dr. Siti Nurhaliza • 6 Juli 2025</p>
+                    </div>
+                    <div class="recent-article">
+                        <h4>Studi Etnografi Digital di Era Post-Pandemi</h4>
+                        <p>Dr. Bambang Hermanto • 4 Juli 2025</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Kategori Populer</h3>
+                    <div>
+                        <a href="#" class="category-tag">Teknologi</a>
+                        <a href="#" class="category-tag">Kesehatan</a>
+                        <a href="#" class="category-tag">Pendidikan</a>
+                        <a href="#" class="category-tag">Ekonomi</a>
+                        <a href="#" class="category-tag">Lingkungan</a>
+                        <a href="#" class="category-tag">Sosial</a>
+                        <a href="#" class="category-tag">Psikologi</a>
+                        <a href="#" class="category-tag">Matematika</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Statistik Jurnal</h3>
+                    <div>
+                        <p><strong>Total Artikel:</strong> 2,847</p>
+                        <p><strong>Peneliti Aktif:</strong> 567</p>
+                        <p><strong>Institusi Partner:</strong> 89</p>
+                        <p><strong>Diakses Bulan Ini:</strong> 45,289</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jurnal Ilmiah Indonesia. Semua hak dilindungi undang-undang.</p>
+            <p>Diterbitkan oleh Lembaga Penelitian dan Pengembangan Ilmu Pengetahuan Indonesia</p>
+        </div>
+    </footer>
+</body>
+</html>
